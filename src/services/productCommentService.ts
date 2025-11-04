@@ -51,7 +51,23 @@ async function createProductComment(
   });
 }
 
+// 수정
+async function updateProductComment(
+  commentId: number,
+  userId: number,
+  content: string
+) {
+  return productCommentRepository.update({ commentId, userId, content });
+}
+
+// 삭제
+async function deleteProductComment(commentId: number, userId: number) {
+  return productCommentRepository.remove({ commentId, userId });
+}
+
 export default {
   getProductComments,
   createProductComment,
+  updateProductComment,
+  deleteProductComment,
 };

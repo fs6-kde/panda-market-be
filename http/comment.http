@@ -1,11 +1,55 @@
 ### 상품 댓글 등록 
-POST http://localhost:3000/products/4/comments
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0NzEyNjE4NywiZXhwIjoxNzQ3MTI5Nzg3fQ.5h3Jp6ie4ruOTBeMQXi7UDtAeqtxkjNgj98cTmZOLEM
+POST http://localhost:3000/product/4/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTgwMDA1NywiZXhwIjoxNzYxODAwOTU3fQ.XgfIoxzxXa0yQmBiXaN9r3hZiV55fFIjV6N-WrGi7ig
 Content-Type: application/json
 
 {
-  "content": "zzzzzzzz"
+  "content": "승엽아 내년엔 잘하자 할 수 있다."
 }
 
+### 상품 댓글 조회 (리밋, 커서 설정)
+GET http://localhost:3000/product/4/comments?limit=5&cursor=6
+
 ### 상품 댓글 조회
-GET http://localhost:3000/products/4/comments?limit=5&cursor=6
+GET http://localhost:3000/product/4/comments
+
+### 상품 댓글 수정 
+PATCH http://localhost:3000/product/comments/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTgwMDA1NywiZXhwIjoxNzYxODAwOTU3fQ.XgfIoxzxXa0yQmBiXaN9r3hZiV55fFIjV6N-WrGi7ig
+Content-Type: application/json
+
+{
+  "content": "승엽아 내년엔 잘하자 할 수 있다."
+}
+
+### 상품 댓글 삭제
+DELETE http://localhost:3000/product/comments/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTgwMDA1NywiZXhwIjoxNzYxODAwOTU3fQ.XgfIoxzxXa0yQmBiXaN9r3hZiV55fFIjV6N-WrGi7ig
+
+
+### 게시글 댓글 등록
+POST http://localhost:3000/article/9/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTY0Mjc0MCwiZXhwIjoxNzYxNjQzNjQwfQ.QcTHgAuHwZie8H3heYkU-qyijxqu8pc6w76zTloKWaY
+
+{
+  "content": "오 되나요??"
+}
+
+
+### 게시글 댓글 조회
+GET http://localhost:3000/article/9/comments
+
+
+### 게시글 댓글 수정
+PATCH http://localhost:3000/article/comments/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTY0Mjc0MCwiZXhwIjoxNzYxNjQzNjQwfQ.QcTHgAuHwZie8H3heYkU-qyijxqu8pc6w76zTloKWaY
+
+{
+  "content": "오 수정 되나요??"
+}
+
+### 게시글 댓글 삭제
+DELETE http://localhost:3000/article/comments/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTY0Mjc0MCwiZXhwIjoxNzYxNjQzNjQwfQ.QcTHgAuHwZie8H3heYkU-qyijxqu8pc6w76zTloKWaY

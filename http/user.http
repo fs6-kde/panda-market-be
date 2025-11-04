@@ -3,8 +3,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "email": "test@example.com",
-  "nickName": "다은킴",
+  "email": "test1@example.com",
+  "nickName": "김회원",
   "password": "12341234"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "test@example.com",
+  "email": "test1@gmail.com",
   "password": "12341234"
 }
 
@@ -27,3 +27,14 @@ Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdC
 
 ###
 GET http://localhost:3000
+
+### 유저 정보 조회
+GET http://localhost:3000/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1MjE1NzYyNSwiZXhwIjoxNzUyMTU4NTI1fQ.ORnxDUxHstgcJVCgMhe3UISd5_YQp_7X4BpcM-2xP-Q
+
+### 로그아웃
+POST http://localhost:3000/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc2MjE1OTgyMywiZXhwIjoxNzYyMTYwNzIzfQ.7qGwvQAbTcHWbxtOL6vVIdq6QS-phjUvaRYH5-Fr3HY
+Content-Type: application/json
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc2MjE1OTgyMywiZXhwIjoxNzYyMTYzNDIzfQ.-2km8sbarczYuI-sRIpoVwPPlNtodYmM63g20huaGN8

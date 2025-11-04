@@ -112,7 +112,7 @@ userController.post(
 );
 
 /**
- * 유저 로그인 유지
+ * 유저 로그인 확인
  */
 userController.get(
   "/users/me",
@@ -134,6 +134,42 @@ userController.get(
 
       const { password, refreshToken, ...safeUser } = user;
       res.json(safeUser);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+/**
+ * 로그아웃
+ * - 요구사항: DB refreshToken 제거 + 브라우저 쿠키 삭제
+ * - 인증: Access Token 필요 (현재 기기에서만 로그아웃)
+ */
+userController.post(
+  "/logout",
+  auth.verifyAccessToken,
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId = req.auth?.userId;
+      if (!userId) {
+        return res.status(401).json({ message: "인증 정보가 없습니다." });
+      }
+
+      // 1) DB에서 refreshToken 제거
+      await userService.logout(userId);
+
+      // 2) 브라우저 쿠키 삭제 (발급 시와 동일한 옵션으로 clear)
+      //   - path, sameSite, secure, httpOnly가 발급과 동일해야 함
+      res.clearCookie("refreshToken", {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        path: "/token/refresh",
+      });
+
+      // (선택) accessToken은 클라이언트 저장소(localStorage/메모리)에서 제거
+      // 서버에서는 관리하지 않으므로 안내 메시지만 반환
+      return res.json({ message: "로그아웃 되었습니다." });
     } catch (error) {
       next(error);
     }

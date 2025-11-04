@@ -11,6 +11,8 @@ import productCommentController from "./controllers/productCommentController";
 import favoriteController from "./controllers/favoriteController";
 import uploadController from "./controllers/uploadController";
 import { AppError } from "./types/errors";
+import articleController from "./controllers/articleController";
+import articleCommentController from "./controllers/articleCommentController";
 
 const app = express();
 const port = process.env.PORT ?? 3000;
@@ -34,8 +36,10 @@ app.use(
 app.use("/api", uploadController);
 app.use("/", userController);
 app.use("/products", productController);
-app.use("/", productCommentController);
+app.use("/product", productCommentController);
 app.use("/", favoriteController);
+app.use("/articles", articleController);
+app.use("/article", articleCommentController);
 
 // express-jwt 인증 에러 핸들링
 app.use((err: any, req: Request, res: Response, next: NextFunction): void => {

@@ -14,10 +14,10 @@
     "ssh": "dotenv -- bash -c 'ssh -i \"$SSH_KEY_PATH\" -L 5432:$DB_HOST:5432 $EC2_USER@$EC2_HOST'"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.842.0",
+    "@aws-sdk/client-s3": "^3.911.0",
     "@aws-sdk/s3-request-presigner": "^3.842.0",
     "@prisma/client": "^6.7.0",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

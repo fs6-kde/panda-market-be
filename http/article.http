@@ -1,0 +1,33 @@
+### 게시글 등록
+POST http://localhost:3000/articles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTIwNjY0MiwiZXhwIjoxNzYxMjA3NTQyfQ.skwpxnD3OcbIOlkYo_VqMy_ELVHCToB6b5THv70HnB8
+
+{
+  "title": "한번 입은 옷인데 얼마에 내놓으면 좋을까요?",
+  "content": "원가는 5만원입니다"
+}
+
+### 게시글 전체 조회 (최신순)
+GET http://localhost:3000/articles?page=1&pageSize=5&orderBy=recent
+
+### 게시글 전체 조회 (댓글 많은 순)
+GET http://localhost:3000/articles?page=1&pageSize=5&orderBy=comment
+
+### 게시글 상세 조회
+GET http://localhost:3000/articles/9
+
+### 게시글 삭제
+DELETE http://localhost:3000/articles/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTI3NTAyMCwiZXhwIjoxNzYxMjc1OTIwfQ.FGsyCtx_e16Wulojhr9Bh4oPFQ1nPcood9TufRACUrQ
+
+### 게시글 수정 
+PATCH http://localhost:3000/articles/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MTI3NTAyMCwiZXhwIjoxNzYxMjc1OTIwfQ.FGsyCtx_e16Wulojhr9Bh4oPFQ1nPcood9TufRACUrQ
+
+{
+    "title": "에베렙",
+    "content": "에베레레벨"
+}
+

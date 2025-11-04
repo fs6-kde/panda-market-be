@@ -1,6 +1,6 @@
 import { User } from "@prisma/client";
 import userRepository from "../repositories/userRepository";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {
   AuthenticationError,
@@ -126,6 +126,16 @@ async function getUserById(id: User["id"]) {
   return filterSensitiveUserData(user);
 }
 
+/** 현재 사용자 세션(리프레시 토큰) 무효화 */
+async function logout(userId: number) {
+  try {
+    // DB에 저장된 refreshToken 제거
+    await userRepository.update(userId, { refreshToken: null });
+  } catch (e) {
+    throw new ServerError("로그아웃 중 오류가 발생했습니다.");
+  }
+}
+
 export default {
   createdUser,
   getUser,
@@ -133,4 +143,5 @@ export default {
   refreshToken,
   updateUser,
   getUserById,
+  logout,
 };
