@@ -16,7 +16,6 @@ GET http://localhost:3000/products?page=1&pageSize=10&orderBy=recent
 
 ### 상품 상세 조회
 GET http://localhost:3000/products/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0OTcwNTUyOCwiZXhwIjoxNzQ5NzA5MTI4fQ.abynpN2pe7-5OW_TXnYtQxhgnhkY70fY6pcqZJRBb6g
 
 ### 수정, 삭제는 프론트에서 연결하고 확인함
 

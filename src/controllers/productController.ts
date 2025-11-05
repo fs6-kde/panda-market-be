@@ -117,16 +117,13 @@ productController.get(
 // 상품 상세 조회 api
 productController.get(
   "/:id",
-  auth.verifyAccessToken,
   async (
-    req: Request<{ id: string }> & { auth?: { userId: number } },
+    req: Request<{ id: string }>,
     res: Response,
     next: NextFunction
   ): Promise<void> => {
     try {
       const userId = req.auth?.userId;
-      if (userId === undefined)
-        throw new AuthenticationError("인증 정보가 없습니다.");
 
       const product = await productService.getProductById(
         Number(req.params.id),
